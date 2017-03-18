@@ -42,10 +42,12 @@ def all_recipes():
 
 #combined dictionary (python 2):
 def combine_lists():
+    global z
     z = rest_list.copy()
     z.update(recipe_list)
-    for key in z.keys():
-        print key
+    #for key in z.keys():
+        #print key
+
 #get entire list of foods:
 #def get_list():
 #    x = random.randint(0, len(list_of_food) - 1)
@@ -83,6 +85,11 @@ def get_food_adds():
     else:
         print "Please choose 'restaurant' or 'recipe'"
 
+def get_random_food():
+    combine_lists()
+    x = random.randint(0, len(rest_list) + len(recipe_list))
+    for x in z:
+        print x#, z[x]
 
 #~~~~~~~~CODE~~~~~~~~~~~
 get_food_adds()
@@ -94,3 +101,5 @@ print "Restaurants: ",
 all_restaurants()
 print "Combined list: ",
 combine_lists()
+print "Rando Calrithean picks this for dinner: ",
+get_random_food()
