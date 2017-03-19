@@ -10,14 +10,15 @@ import random
 
 
 def get_current_restlist():
-    with open('rest_list.txt') as f:
+    with open("rest_list.txt") as f:
         global rest_list
         rest_list = defaultdict(list)
         for line in f:
             name, site_url = line.strip().split()
             rest_list[name].append(site_url)
+
 def get_current_recipelist():
-    with open('recipe_list.txt') as f:
+    with open("recipe_list.txt") as f:
         global recipe_list
         recipe_list = defaultdict(list)
         for line in f:
@@ -48,7 +49,7 @@ def add_recipe():
     new_name = raw_input("Name: ")
     new_recipe = raw_input("Recipe URL: ")
     with open("recipe_list.txt", "a") as f:
-        x = "'" + new_name + "'"
+        x = new_name
         y = new_recipe
         f.write(x + ' ' + y)
     #recipe_list.update({x : y})
@@ -57,7 +58,7 @@ def add_restaurant():
     new_name = raw_input("Name: ")
     new_menu = raw_input("Menu URL: ")
     with open("rest_list.txt", "a") as f:
-        x = "'" + new_name + "'"
+        x = new_name
         y = new_menu
         f.write(x + ' ' + y)
     #rest_list.update({x : y})
