@@ -1,10 +1,28 @@
 #! python
-
+from collections import defaultdict
 import random
 
-#dictionaries of foods : recipes/URL:
-rest_list = {}
-recipe_list = {}
+#def clear_current_restaurants():
+    #with open('rest_list.txt') as f:
+
+#def clear_current_recipes():
+    #with open('recipe_list.txt')as f:
+
+
+def get_current_restlist():
+    with open('rest_list.txt') as f:
+        global rest_list
+        rest_list = defaultdict(list)
+        for line in f:
+            name, site_url = line.strip().split()
+            rest_list[name].append(site_url)
+def get_current_recipelist():
+    with open('recipe_list.txt') as f:
+        global recipe_list
+        recipe_list = defaultdict(list)
+        for line in f:
+            name, recipe = line.strip().split()
+            recipe_list[name].append(recipe)
 
 #print out all restaurants:
 def all_restaurants():
@@ -18,6 +36,8 @@ def all_recipes():
 
 #combined dictionary (python 2):
 def combine_lists():
+    get_current_recipelist()
+    get_current_restlist()
     global z
     z = rest_list.copy()
     z.update(recipe_list)
@@ -27,16 +47,20 @@ def combine_lists():
 def add_recipe():
     new_name = raw_input("Name: ")
     new_recipe = raw_input("Recipe URL: ")
-    x = "'" + new_name + "'"
-    y = new_recipe
-    recipe_list.update({x : y})
+    with open("recipe_list.txt", "a") as f:
+        x = "'" + new_name + "'"
+        y = new_recipe
+        f.write(x + ' ' + y)
+    #recipe_list.update({x : y})
 
 def add_restaurant():
     new_name = raw_input("Name: ")
     new_menu = raw_input("Menu URL: ")
-    x = "'" + new_name + "'"
-    y = new_menu
-    rest_list.update({x : y})
+    with open("rest_list.txt", "a") as f:
+        x = "'" + new_name + "'"
+        y = new_menu
+        f.write(x + ' ' + y)
+    #rest_list.update({x : y})
 
 
 #add food to the dictionaries:
@@ -53,9 +77,12 @@ def get_random_food():
     combine_lists()
     x = random.randint(0, len(rest_list) + len(recipe_list))
     for x in z:
-        print x#, z[x]
+        print x, z[x]
 
 #~~~~~~~~CODE~~~~~~~~~~~
+
+get_current_restlist()
+get_current_recipelist()
 get_food_adds()
 print recipe_list
 print rest_list
