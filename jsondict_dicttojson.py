@@ -9,13 +9,19 @@ import json
 
 def get_recipes_json():
     global recipes_old
-    with open("recipe_list.txt") as f:
-        recipes_old = json.loads(f.read())
+    with open("recipe_list.txt", "r+") as f:
+        try:
+            recipes_old = json.load(f)
+        except ValueError as e:
+            recipes_old = {}
 
 def get_restaurants_json():
     global rest_old
-    with open("rest_list.txt") as f:
-        rest_old = json.loads(f.read())
+    with open("rest_list.txt", "r+") as f:
+        try:
+            rest_old = json.load(f)
+        except ValueError as e:
+            rest_old = {}
 
 def add_to_rest_json():
     global rest_list
@@ -35,21 +41,33 @@ def add_to_rest_json():
 
 def add_to_recipe_json():
     global recipe_list
-    f = open("recipe_list.txt", "r+")
-    try:
-        recipe_list = json.load(f)
-    except ValueError as e:
-        recipe_list = {}
-    print "Add Recipe!"
-    new_name = raw_input("Name: ")
-    new_url = raw_input("Recipe URL: ")
-    x = new_name
-    y = new_url
-    recipe_list[x] = y
-    f.seek(0)
-    f.write(json.dumps(recipe_list))
+    with open("recipe_list.txt", "r+") as f:
+        try:
+            recipe_list = json.load(f)
+        except ValueError as e:
+            recipe_list = {}
+        print "Add Recipe!"
+        new_name = raw_input("Name: ")
+        new_url = raw_input("Recipe URL: ")
+        x = new_name
+        y = new_url
+        recipe_list[x] = y
+        f.seek(0)
+        f.write(json.dumps(recipe_list))
+
+def show_restold():
+    for i in rest_old.keys():
+        print i
+
+def show_recipeold():
+    for i in recipes_old.keys():
+        print i
 
 
 #~~~~~~~~
-add_to_recipe_json()
-# add_to_rest_json()
+get_recipes_json()
+get_restaurants_json()
+show_restold()
+show_recipeold()
+#add_to_recipe_json()
+#add_to_rest_json()
