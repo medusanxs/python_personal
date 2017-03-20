@@ -1,0 +1,29 @@
+Things I aspire to do with dinner spinner
+ 1.) Be able to input two sets of data:
+      a.) data set one: Restaurant list
+      b.) data det two: Recipe list
+ 2.) Apply those lists to be able to provide an 'automated' choice:
+      a.) This automated choice should be done at a chosen time, and notify you of that choice.
+      b.) This option should be in the correct timezone/date for the user.
+      c.) This choice should be able to pull from one list, or a combined list.
+ 3.) If choosing a recipe:
+      a.) Recipe should provide a URL.
+      b.) Recipe can scrape/parse out the ingredients.
+      c.) Sync to an application (PrimeNow, InstaCart, etc.) to allow recipe list for shopping.
+      d.) Be able to set servings appropriately to chosen number.
+      e.) Not return the same recipe consecutively.
+ 4.) If choosing a restaurant:
+      a.) Should provide a menu URL.
+      b.) Be age appropriate.
+ 5.) If combined list:
+      a.) Should adhere to the above.
+
+Long term goals:
+  1.) State specific restaurant lists:
+      a.) State/City specific.
+      b.) Most popular list (obtained from users)
+      c.) Shareable lists.
+  2.) Recipe keeper:
+      a.) Swappable lists.
+      b.) Ability to research based on available ingredients.
+      c.) Modifiable by dietary needs (allergens, clean eating, diabetics, etc.)
